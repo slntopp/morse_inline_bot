@@ -35,25 +35,16 @@ def help_command(update, context):
 def inlinequery(update, context):
     """Handle the inline query."""
     query = update.inline_query.query
-    results = [
-        InlineQueryResultArticle(
-            id=uuid4(), title="Caps", input_message_content=InputTextMessageContent(query.upper())
-        ),
-        InlineQueryResultArticle(
-            id=uuid4(),
-            title="Bold",
-            input_message_content=InputTextMessageContent(
-                "*{}*".format(escape_markdown(query)), parse_mode=ParseMode.MARKDOWN
-            ),
-        ),
-        InlineQueryResultArticle(
-            id=uuid4(),
-            title="Italic",
-            input_message_content=InputTextMessageContent(
-                "_{}_".format(escape_markdown(query)), parse_mode=ParseMode.MARKDOWN
-            ),
-        ),
-    ]
+    if "m/" in query:
+        results = [
+            InlineQueryResultArticle(
+                id=uuid4(), title="Result", description="words...", input_message_content=InputTextMessageContent("words words words"), thumb_url="https://i.pinimg.com/originals/f7/86/44/f7864403f01d75ac2d24944ac836ae1f.png")
+        ]
+    else:
+        results = [
+            InlineQueryResultArticle(
+                id=uuid4(), title="Morse code", description=".-.. .-- -.-", input_message_content=InputTextMessageContent(".-.. .-- -.-"), thumb_url="https://camo.githubusercontent.com/3494de09199b6b16fce39dfce8b20ccd1b2f8be0/687474703a2f2f7777772e636f64656275672e6f72672e756b2f6173736574732f73746570732f3534302f696d6167655f312e706e67")
+        ]
 
     update.inline_query.answer(results)
 
@@ -63,7 +54,7 @@ def main():
     if not api_token:
         raise RuntimeError("No token provided. Check your .env file")
 
-    updater = Updater("TOKEN", use_context=True)
+    updater = Updater(api_token, use_context=True)
 
     dp = updater.dispatcher
 
