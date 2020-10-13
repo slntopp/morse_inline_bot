@@ -14,17 +14,24 @@ load_dotenv()
 
 morse_code_translator = MorseCodeTranslator()
 
+welcome_message = """
+*Welcome!*
 
-# Define a few command handlers. These usually take the two arguments update and
-# context. Error handlers also receive the raised TelegramError object in error.
-def start(update, context):
-    """Send a message when the command /start is issued."""
-    update.message.reply_text('Hi!')
+To encode with Morse code, send:
+`@morse_inline_bot your_message`
+
+To decode, send:
+`@morse_inline_bot m/-.-- --- ..- .-. -- . ... ... .- --. .`
+
+__Enjoy!__
+
+_P.S._
+_You can find and use(why'd you) source code at [github](https://github.com/slntopp/morse_inline_bot)_
+"""
 
 
-def help_command(update, context):
-    """Send a message when the command /help is issued."""
-    update.message.reply_text('Help!')
+def welcome(update, context):
+    update.message.reply_text(welcome_message, parse_mode='MarkdownV2')
 
 
 def make_description(text):
@@ -71,8 +78,8 @@ def main():
 
     dp = updater.dispatcher
 
-    dp.add_handler(CommandHandler("start", start))
-    dp.add_handler(CommandHandler("help", help_command))
+    dp.add_handler(CommandHandler("start", welcome))
+    dp.add_handler(CommandHandler("help", welcome))
 
     dp.add_handler(InlineQueryHandler(inlinequery))
 
