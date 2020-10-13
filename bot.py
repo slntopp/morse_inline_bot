@@ -15,18 +15,18 @@ load_dotenv()
 morse_code_translator = MorseCodeTranslator()
 
 welcome_message = """
-*Welcome!*
+*Welcome\!*
 
 To encode with Morse code, send:
-`@morse_inline_bot your_message`
+`@morse_inline_bot your\_message`
 
 To decode, send:
 `@morse_inline_bot m/-.-- --- ..- .-. -- . ... ... .- --. .`
 
-__Enjoy!__
+__Enjoy\!__
 
-_P.S._
-_You can find and use(why'd you) source code at [github](https://github.com/slntopp/morse_inline_bot)_
+_P\.S\._
+_You can find and use\(why'd you\) source code at [GitHub](https://github.com/slntopp/morse_inline_bot)_
 """
 
 
