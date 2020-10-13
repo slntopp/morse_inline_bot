@@ -3,4 +3,5 @@ include
 lib
 pyvenv.cfg
 .vscode
+.env
 __pycache__
