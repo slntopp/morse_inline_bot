@@ -1,6 +1,7 @@
 # morse_inline_bot
 
 Simple Telegram Inline bot for encoding and decoding Morse code.
+You can just try it out here [@morse_inline_bot](https://t.me/morse_inline_bot)
 
 ## Running the bot legacy
 
